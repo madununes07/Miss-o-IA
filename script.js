@@ -13,7 +13,7 @@ const perguntas = [
             afirmacao: "A tecnologia traz benefícios para a saúde mental, facilitando os estudos, a comunicação e o acesso à informação."
         },
         {
-           texto: "A tecnologia pode prejudicar a saúde mental"
+           texto: "A tecnologia pode prejudicar a saúde mental",
            afirmacao: "O uso excessivo da tecnologia prejudica a saúde mental, podendo causar ansiedade, estresse e dependência."
         }
     ]
@@ -27,7 +27,7 @@ const perguntas = [
 
         },
         {
-            texto: "AS redes sociais podem ser prejudicais"
+            texto: "AS redes sociais podem ser prejudicais",
             afirmacao:  "O uso excessivo das redes sociais prejudica a autoestima e pode afetar negativamente a saúde mental."
         }
        
@@ -42,7 +42,7 @@ const perguntas = [
 
        },
        {
-        texto:  "A inteligência artificial exige cuidado"
+        texto:  "A inteligência artificial exige cuidado",
         afirmacao:  "O uso excessivo da inteligência artificial pode gerar dependência e diminuir a autonomia nos estudos."
     }
        
@@ -57,7 +57,7 @@ const perguntas = [
 
        },
        {
-        texto:  "O excesso de telas faz mal"
+        texto:  "O excesso de telas faz mal",
         afirmacao:  "O excesso de tempo diante das telas prejudica o sono e a capacidade de concentração."
     }
        
@@ -73,7 +73,7 @@ const perguntas = [
 
        },
        {
-        texto: "Continuar usando sem limites"
+        texto: "Continuar usando sem limites",
         afirmacao:  "O uso excessivo da tecnologia prejudica a saúde mental e pode causar problemas como estresse, ansiedade e falta de concentração."
     }
        
