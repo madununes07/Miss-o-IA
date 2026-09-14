@@ -6,48 +6,116 @@ const textoResultado = document.querySelector(".texto-resultado");
 
 const perguntas = [
 {
-    enunciado: "Ao sair da escola, Davi vê um parque cheio de lixo e pensa no impacto disso para a natureza. Oque ele decide?",
+    enunciado: "Helena percebe que passa mais de 6 horas por dia no celular. O algoritmo das redes e os chats de Ia começaram a antecipar tudo o que ele quer ver gerando um ciclo infinito de notificações e conteúdos altamente personaçizados. Em sala de aula a professora propós um debate sobre como a tecnologia pode influenciar a saúde mental. Como Helena se posiciona?",
     alternativas: [
-        "Cuida do meio anbiente é responsabilidade de todos.",
-        "Pequenas atitudes não fazem, diferença para o meio anbiente."
+        {
+            texto:  "A tecnologia pode trazer benefícios à saúde mental",
+            afirmacao: "A tecnologia traz benefícios para a saúde mental, facilitando os estudos, a comunicação e o acesso à informação."
+        },
+        {
+           texto: "A tecnologia pode prejudicar a saúde mental"
+           afirmacao: "O uso excessivo da tecnologia prejudica a saúde mental, podendo causar ansiedade, estresse e dependência."
+        }
     ]
 },
 {
-    enunciado: "Depois de aprender sobre a preservação de natureza a professora pode que Davi proponha uma ação para reduzir o lixo na escola. Qual atituide Davi toma?",
+    enunciado: "Durante o debate, Helena contou que costuma usar as redes sociais todos os dias. Alguns colegas destacam seus beneficios, enquanto outros falam sobre os problemas que elas podem causar. Como Helena se posciona?",
     alternativas: [
-        "Orgonizar campanha de reciclagem com a turma.",
-        "Decide não participar da campanha porque acredita que fará diferença."
+        {
+             texto: "As redes sociais podem ser positivas",
+             afirmacao: "As redes sociais apresentam benefícios, pois aproximam as pessoas e contribuem para o aprendizado."
+
+        },
+        {
+            texto: "AS redes sociais podem ser prejudicais"
+            afirmacao:  "O uso excessivo das redes sociais prejudica a autoestima e pode afetar negativamente a saúde mental."
+        }
+       
     ]
 },
 {
-    enunciado: "Depois de Davi participar de um projeto sobre preservação da natureza a turma iniciou uma discussão sobre como o proteger o meio anbiente. Oque Davi fez?",
+    enunciado: "Na aula seguinte, Helena conheceu ferramentas de inteligência artificial para ajudar nos estudos. A turma disutiu suas vantagens e desafios. Como Hlena se posciona?",
     alternativas: [
-        "Defede a reciclagem, a economia de água e o plantio de árvore.",
-        "Afirma que pequenas açoẽs não fazem a diferença e que a responsabilidade é apenas do governo."
+        {
+            texto: "A inteligência artificial pode ser uma alhiada",
+            afirmacao: "A inteligência artificial é uma importante aliada nos estudos, auxiliando na pesquisa e na organização das informações."
+
+       },
+       {
+        texto:  "A inteligência artificial exige cuidado"
+        afirmacao:  "O uso excessivo da inteligência artificial pode gerar dependência e diminuir a autonomia nos estudos."
+    }
+       
     ]
 },
 {
-    enunciado: "Ao final da discussão, Davi precisou criar um cartaz no computador para concientizar as pessoas sobre a preservação do meio anbiente. E agora?",
+    enunciado: "Depois  da pesquisa, Helena percebeu que passava muitas horas em frente ás telas. A professora perguntou à turma quais hábitos poderiam melhorar a saúde mental. Como Helena se posicona?",
     alternativas: [
-        "Criar um cartaz com imagens sobre reciclagem e preservação da natureza.",
-        "Criar um cartaz dizendo que as açoẽs das pessoas influenciam na preserevação da natureza."
+        {
+            texto:"O uso equilibrado da tecnologia faz bem",
+            afirmacao: "O uso equilibrado da tecnologia contribui para uma rotina mais saudável e permite aproveitar seus benefícios."
+
+       },
+       {
+        texto:  "O excesso de telas faz mal"
+        afirmacao:  "O excesso de tempo diante das telas prejudica o sono e a capacidade de concentração."
+    }
+       
+
     ]
 },
 {
-    enunciado: "Depois de apresentar o cartaz, a professora propõs uma ação para reduzir o desperdicio na escola. Oque Davi fez?",
-    alternativas: [
-        "Organiza uma campanha para economizar água e separar o lixo reciclável.",
-        "Comtinua despediçando água e jogando lixo em qualquer lugar."
+    enunciado: "Ao inal do projeto, Helena refletiu sobre tudo o que aprendeu e decidiu mudar muitos hábitos relacionados ao uso da tecnologia. Como Helena aredita que deve agir?",
+    alternativas: [    
+        {
+            texto:   "Usar a tecnologi com equilibrio",
+            afirmacao: "O uso equilibrado da tecnologia permite aproveitar seus benefícios sem prejudicar a saúde mental."
+
+       },
+       {
+        texto: "Continuar usando sem limites"
+        afirmacao:  "O uso excessivo da tecnologia prejudica a saúde mental e pode causar problemas como estresse, ansiedade e falta de concentração."
+    }
+       
     ]
 }
 ];
 
 let atual = 0;
 let perguntaAtual;
+let historiaFinal = "";
 
 function mostraPergunta() {
+    if (atual >= perguntas.length) {
+        mostraResultado();
+        return;
+    }
     perguntaAtual = perguntas[atual];
     caixaPerguntas.textContent = perguntaAtual.enunciado;
+    caixaAlternativas.textContent = "";
+    mostraAlternativas();
 }
 
-mostraPergunta()
+function mostraAlternativas(){
+    for(const alternativa of perguntaAtual.alternativas) {
+        const botaoAlternativa = document.createElement("button");
+        botaoAlternativa.textContent = alternativa.texto;
+        botaoAlternativa.addEventListener("click", () => respostaSelecionada(alternativa));
+        caixaAlternativas.appendChild(botaoAlternativa);
+    }
+}
+
+function respostaSelecionada(opcaoSelecionada){
+    const afirmacao = opcaoSelecionada.afirmacao;
+    historiaFinal += afirmacao + "  ";
+    atual++;
+    mostraPergunta();
+}
+
+function mostraResultado() {
+    caixaPerguntas.textContent = "Em 2049...";
+    textoResultado.textContent = historiaFinal;
+    caixaAlternativas.textContent = "";
+}
+
+mostraPergunta();
